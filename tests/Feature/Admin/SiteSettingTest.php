@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Admin;
 
+use App\Models\Experience;
 use App\Models\SiteSetting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -42,6 +43,12 @@ class SiteSettingTest extends TestCase
             'seo_title' => 'Home title',
             'seo_description' => 'Home description.',
             'seo_keywords' => 'one, two, One',
+            'person_name' => 'Shykat Roy',
+            'person_job_title' => 'Full-Stack Web Developer',
+            'person_email' => 'me@example.com',
+            'person_phone' => '+880 1712-345678',
+            'person_skills' => ['Laravel', '', 'React'],
+            'person_languages' => ['English'],
             'linkedin_url' => 'https://www.linkedin.com/in/me',
             'facebook_url' => 'https://www.facebook.com/me',
             'whatsapp_number' => '+880 1712-345678',
@@ -73,6 +80,7 @@ class SiteSettingTest extends TestCase
         $this->assertSame(['One', 'Two'], $settings->about_reasons);
         $this->assertSame(['websites', 'apps'], $settings->hero_words);
         $this->assertSame(['one', 'two'], $settings->seo_keywords);
+        $this->assertSame(['Laravel', 'React'], $settings->person_skills);
         $this->assertSame('8801712345678', $settings->whatsapp_number);
         $this->assertSame([600, 500], [$settings->about_photo_width, $settings->about_photo_height]);
         Storage::disk('public')->assertExists([$settings->logo_path, $settings->favicon_path, $settings->about_photo_path]);
@@ -94,6 +102,18 @@ class SiteSettingTest extends TestCase
         $this->actingAs(User::factory()->create())
             ->put(route('site-settings.update'), $this->validData(['hero_highlight' => 'not in it']))
             ->assertSessionHasErrors('hero_highlight');
+    }
+
+    public function test_the_api_includes_the_person_with_their_current_job(): void
+    {
+        SiteSetting::current()->update(['person_name' => 'Shykat Roy', 'person_job_title' => 'Developer', 'person_skills' => ['Laravel']]);
+        Experience::factory()->create(['company' => 'PFEC Global', 'company_url' => 'https://pfecglobal.com', 'end' => null]);
+        Experience::factory()->create(['company' => 'Old Co', 'end' => '2024']);
+
+        $this->getJson(route('api.settings.show'))
+            ->assertJsonPath('data.person.name', 'Shykat Roy')
+            ->assertJsonPath('data.person.skills', ['Laravel'])
+            ->assertJsonPath('data.person.worksFor', ['name' => 'PFEC Global', 'url' => 'https://pfecglobal.com']);
     }
 
     public function test_images_can_be_removed(): void

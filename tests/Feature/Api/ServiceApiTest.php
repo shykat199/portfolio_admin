@@ -32,7 +32,8 @@ class ServiceApiTest extends TestCase
             ->assertJsonPath('data.story', ['One.', 'Two.'])
             ->assertJsonPath('data.seo.title', $service->heading)
             ->assertJsonPath('data.seo.description', $service->intro)
-            ->assertJsonPath('data.seo.keywords', [$service->name]);
+            ->assertJsonPath('data.seo.keywords', [$service->name])
+            ->assertJsonPath('data.updatedAt', $service->updated_at->toDateString());
     }
 
     public function test_hidden_services_are_not_found(): void

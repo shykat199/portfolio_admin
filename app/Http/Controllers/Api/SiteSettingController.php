@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Experience;
 use App\Models\SiteSetting;
 use Illuminate\Http\JsonResponse;
 
@@ -17,6 +18,7 @@ class SiteSettingController extends Controller
         $photo = $settings->url($settings->about_photo_path);
 
         return response()->json(['data' => [
+            'updatedAt' => $settings->updated_at?->toDateString(),
             'logo' => $settings->url($settings->logo_path),
             'favicon' => $settings->url($settings->favicon_path),
             'social' => [
@@ -34,6 +36,7 @@ class SiteSettingController extends Controller
                 'highlight' => $settings->hero_highlight,
                 'supporting' => $settings->hero_supporting,
             ] : null,
+            'person' => $settings->person_name ? $this->person($settings) : null,
             'seo' => $settings->seo_title ? [
                 'title' => $settings->seo_title,
                 'description' => $settings->seo_description,
@@ -52,5 +55,29 @@ class SiteSettingController extends Controller
                 'reasons' => $settings->about_reasons,
             ],
         ]]);
+    }
+
+    /**
+     * Who you are, for search engines (schema.org Person). "Works for" comes
+     * from the current job in Experience.
+     *
+     * @return array<string, mixed>
+     */
+    private function person(SiteSetting $settings): array
+    {
+        $currentJob = Experience::query()->active()->whereNull('end')->first();
+
+        return [
+            'name' => $settings->person_name,
+            'jobTitle' => $settings->person_job_title,
+            'description' => $settings->person_description,
+            'email' => $settings->person_email,
+            'phone' => $settings->person_phone,
+            'city' => $settings->person_city,
+            'country' => $settings->person_country,
+            'skills' => $settings->person_skills ?? [],
+            'languages' => $settings->person_languages ?? [],
+            'worksFor' => $currentJob ? ['name' => $currentJob->company, 'url' => $currentJob->company_url] : null,
+        ];
     }
 }

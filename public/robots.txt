@@ -1,2 +1,5 @@
+# The admin panel is private. Only uploaded images are crawlable, because the
+# portfolio website uses them (blog covers, project screenshots, logos).
 User-agent: *
-Disallow:
+Allow: /storage/
+Disallow: /

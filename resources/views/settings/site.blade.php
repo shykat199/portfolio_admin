@@ -63,6 +63,44 @@
 
             <section class="space-y-5 rounded-2xl border border-line bg-raised p-5 sm:p-6">
                 <div>
+                    <h2 class="font-medium">{{ __('Person (for Google)') }}</h2>
+                    <p class="text-xs text-muted">{{ __('Tells search engines who you are, so your name can show with your photo, job and profiles. “Works for” is taken from your current job in Experience.') }}</p>
+                </div>
+                <div class="grid gap-5 sm:grid-cols-2">
+                    <x-field name="person_name" :label="__('Full name')">
+                        <input id="person_name" name="person_name" value="{{ old('person_name', $settings->person_name) }}" required maxlength="100" placeholder="{{ __('e.g. Shykat Roy') }}" class="{{ $input }}">
+                    </x-field>
+                    <x-field name="person_job_title" :label="__('Job title')">
+                        <input id="person_job_title" name="person_job_title" value="{{ old('person_job_title', $settings->person_job_title) }}" required maxlength="120" placeholder="{{ __('e.g. Full-Stack Web Developer') }}" class="{{ $input }}">
+                    </x-field>
+                </div>
+                <x-field name="person_description" :label="__('Short bio')" :hint="__('Optional. One sentence about what you do.')">
+                    <textarea id="person_description" name="person_description" rows="2" maxlength="300" placeholder="{{ __('e.g. Full-stack web developer building fast websites and apps with Laravel and React.') }}" class="{{ $input }}">{{ old('person_description', $settings->person_description) }}</textarea>
+                </x-field>
+                <div class="grid gap-5 sm:grid-cols-2">
+                    <x-field name="person_email" :label="__('Email')">
+                        <input id="person_email" name="person_email" type="email" value="{{ old('person_email', $settings->person_email) }}" required maxlength="200" placeholder="you@example.com" class="{{ $input }}">
+                    </x-field>
+                    <x-field name="person_phone" :label="__('Phone')" :hint="__('Optional. Only if you want it public.')">
+                        <input id="person_phone" name="person_phone" type="tel" value="{{ old('person_phone', $settings->person_phone) }}" maxlength="30" placeholder="+880 1712 345678" class="{{ $input }}">
+                    </x-field>
+                    <x-field name="person_city" :label="__('City')">
+                        <input id="person_city" name="person_city" value="{{ old('person_city', $settings->person_city) }}" maxlength="80" placeholder="{{ __('e.g. Dhaka') }}" class="{{ $input }}">
+                    </x-field>
+                    <x-field name="person_country" :label="__('Country')">
+                        <input id="person_country" name="person_country" value="{{ old('person_country', $settings->person_country) }}" maxlength="80" placeholder="{{ __('e.g. Bangladesh') }}" class="{{ $input }}">
+                    </x-field>
+                </div>
+                <div class="grid gap-5 sm:grid-cols-2">
+                    <x-list-fields name="person_skills" :label="__('Skills')" :hint="__('What you want to be known for.')" :items="old('person_skills', $settings->person_skills ?? [])"
+                        :placeholder="__('e.g. Laravel')" :add-label="__('Add skill')" :max="30" />
+                    <x-list-fields name="person_languages" :label="__('Languages you speak')" :items="old('person_languages', $settings->person_languages ?? [])"
+                        :placeholder="__('e.g. English')" :add-label="__('Add language')" />
+                </div>
+            </section>
+
+            <section class="space-y-5 rounded-2xl border border-line bg-raised p-5 sm:p-6">
+                <div>
                     <h2 class="font-medium">{{ __('About section') }}</h2>
                     <p class="text-xs text-muted">{{ __('The “About” part of the home page. The photo is also used in the hero and as the author photo on blog posts.') }}</p>
                 </div>

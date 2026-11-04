@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Storage;
 #[Fillable([
     'logo_path', 'favicon_path', 'linkedin_url', 'github_url', 'facebook_url', 'instagram_url', 'x_url',
     'whatsapp_number', 'hero_prefix', 'hero_words', 'hero_headline', 'hero_highlight', 'hero_supporting',
-    'seo_title', 'seo_description', 'seo_keywords', 'about_title', 'about_story', 'about_photo_path', 'about_photo_alt',
+    'seo_title', 'seo_description', 'seo_keywords', 'person_name', 'person_job_title', 'person_description',
+    'person_email', 'person_phone', 'person_city', 'person_country', 'person_skills', 'person_languages', 'about_title', 'about_story', 'about_photo_path', 'about_photo_alt',
     'about_photo_width', 'about_photo_height', 'about_reasons_title', 'about_reasons',
 ])]
 class SiteSetting extends Model
@@ -25,6 +26,8 @@ class SiteSetting extends Model
             'about_reasons' => 'array',
             'hero_words' => 'array',
             'seo_keywords' => 'array',
+            'person_skills' => 'array',
+            'person_languages' => 'array',
             'about_photo_width' => 'integer',
             'about_photo_height' => 'integer',
         ];

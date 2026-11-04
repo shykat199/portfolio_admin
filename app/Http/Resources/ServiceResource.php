@@ -35,6 +35,7 @@ class ServiceResource extends JsonResource
             'faq' => $this->faq,
             'relatedProjects' => $this->related_projects,
             'seo' => $this->seo(),
+            'updatedAt' => $this->updated_at?->toDateString(),
         ];
     }
 }

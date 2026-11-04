@@ -36,6 +36,7 @@ class ProjectResource extends JsonResource
             'cover' => ['src' => $this->cover_url, 'alt' => $this->cover_alt],
             'screenshots' => $this->screenshotUrls(),
             'seo' => $this->seo(),
+            'updatedAt' => $this->updated_at?->toDateString(),
         ];
     }
 }

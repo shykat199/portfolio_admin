@@ -32,5 +32,32 @@
         "website design",
         "web app development",
         "mobile app development"
+    ],
+    "person_name": "Shykat Roy",
+    "person_job_title": "Full-Stack Web Developer",
+    "person_description": "Full-stack web developer building fast, SEO-friendly websites, web apps and mobile apps with Laravel, React, Next.js and Node.js.",
+    "person_email": "shykatroy1@gmail.com",
+    "person_phone": null,
+    "person_city": "Dhaka",
+    "person_country": "Bangladesh",
+    "person_skills": [
+        "Full-stack web development",
+        "Web application development",
+        "Mobile app development",
+        "PHP",
+        "Laravel",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "MySQL",
+        "REST APIs",
+        "Technical SEO",
+        "Website performance optimisation"
+    ],
+    "person_languages": [
+        "English",
+        "Bengali"
     ]
 }

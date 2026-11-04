@@ -50,6 +50,11 @@ class PostApiTest extends TestCase
             ->assertJsonPath('data.seo', ['title' => 'Custom title', 'description' => 'Custom description', 'keywords' => ['custom keyword']]);
     }
 
+    public function test_api_responses_are_kept_out_of_search_engines(): void
+    {
+        $this->getJson(route('api.posts.index'))->assertHeader('X-Robots-Tag', 'noindex, nofollow');
+    }
+
     public function test_drafts_are_not_found(): void
     {
         $draft = Post::factory()->create();
