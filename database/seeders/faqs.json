@@ -1,0 +1,62 @@
+[
+    {
+        "question": "How do payments work?",
+        "answer": "You pay 50% up front to book your project and the remaining 50% when your website is ready to launch. All prices are fixed and agreed before any work begins.",
+        "is_active": true,
+        "sort_order": 1
+    },
+    {
+        "question": "What about the time difference?",
+        "answer": "It won't affect you. I'm based in Dhaka, Bangladesh, and I work with clients across many time zones. I adjust my hours so you can reach me during your normal working day.",
+        "is_active": true,
+        "sort_order": 2
+    },
+    {
+        "question": "Who owns the website and code?",
+        "answer": "You do. Once your final payment is made, the website, its code and its content all belong to you. You are never locked in.",
+        "is_active": true,
+        "sort_order": 3
+    },
+    {
+        "question": "How long does a project take?",
+        "answer": "A business website usually takes 2 to 3 weeks, and a website with online booking usually takes 4 to 5 weeks. I will confirm your timeline in your quote.",
+        "is_active": true,
+        "sort_order": 4
+    },
+    {
+        "question": "What technologies do you use?",
+        "answer": "I'm a full-stack developer. On the front end I use React, Next.js, TypeScript and Tailwind CSS. On the back end I use PHP, Laravel and Node.js, with databases such as MySQL and PostgreSQL. I pick the right tools for your project, not the other way round.",
+        "is_active": true,
+        "sort_order": 5
+    },
+    {
+        "question": "Will my website be SEO-friendly?",
+        "answer": "Yes. Every website I build is fast, mobile-friendly and set up for search engines, with clean page structure, proper titles and descriptions, structured data and a sitemap, so Google can find and understand your business.",
+        "is_active": true,
+        "sort_order": 6
+    },
+    {
+        "question": "Do you work with clients outside Bangladesh?",
+        "answer": "Yes. I work remotely with businesses all over the world, including the UK, Europe, North America and Australia. We talk by email, video call or WhatsApp at times that suit you.",
+        "is_active": true,
+        "sort_order": 7
+    },
+    {
+        "question": "Do you build web apps and mobile apps?",
+        "answer": "Yes. As well as websites, I build custom web applications such as dashboards, booking systems and customer portals, and mobile apps for iPhone and Android. The same back end can power your website, web app and mobile app together.",
+        "is_active": true,
+        "sort_order": 8
+    },
+    {
+        "question": "Can you add AI features to my website?",
+        "answer": "Yes. I can add AI-powered features such as a chat assistant that answers customer questions, or automation that saves you time on routine tasks.",
+        "is_active": true,
+        "sort_order": 9
+    },
+    {
+        "question": "Do you offer support after launch?",
+        "answer": "Yes. I fix any problems with my work for 30 days after launch at no extra cost. After that, the monthly care plan covers hosting, updates and small changes.",
+        "is_active": true,
+        "sort_order": 10
+    }
+]

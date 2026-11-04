@@ -1,0 +1,142 @@
+[
+    {
+        "name": "Business website",
+        "slug": "small-business-website-design",
+        "for_who": "For businesses that need a professional website that wins trust and brings in enquiries.",
+        "price": 695,
+        "price_suffix": null,
+        "billed_monthly": false,
+        "time_label": "Delivery",
+        "time": "2 to 3 weeks",
+        "includes": [
+            "Up to 5 custom-designed pages",
+            "Looks great on phones, tablets and computers",
+            "Contact form and tap-to-call buttons",
+            "Set up to be found on Google",
+            "Two rounds of changes"
+        ],
+        "heading": "Website design for small businesses",
+        "intro": "Professional small business website design and development: fast, mobile-friendly and SEO-ready, built to bring in enquiries. Fixed price from £695.",
+        "story": "Your website is often the first thing a new customer sees. If it is slow, out of date or hard to use on a phone, they leave and call someone else. I design and build websites that make a good first impression and make it easy for people to get in touch.\n\nYou won't get a template with your logo dropped in. Each page is designed around what your customers need to know and the one thing you want them to do next, whether that is calling you, sending an enquiry or visiting you.",
+        "ideal_for": [
+            "Local businesses that do not have a website yet",
+            "Businesses with an old website that looks poor on phones",
+            "Clinics, salons, restaurants, trades and other service businesses",
+            "Owners who want a clear price and one person to deal with"
+        ],
+        "faq": [
+            {
+                "question": "How much does a small business website cost?",
+                "answer": "A business website starts from £695. I will confirm one fixed price after our free call, based on the number of pages and what you need."
+            },
+            {
+                "question": "Can you redesign my existing website?",
+                "answer": "Yes. I can rebuild your website and move your useful content across, so you keep what works and lose what doesn't."
+            },
+            {
+                "question": "Will my website show up on Google?",
+                "answer": "I set up every website so Google can read it properly, with clear page titles and fast loading. Ranking takes time and no one can honestly promise first place, but you will have a strong foundation."
+            }
+        ],
+        "related_projects": [
+            "clinic-website",
+            "trades-quotes"
+        ],
+        "seo_title": "Small Business Website Design & Development",
+        "sort_order": 1,
+        "is_active": true
+    },
+    {
+        "name": "Website + online booking",
+        "slug": "online-booking-websites",
+        "for_who": "For businesses that take appointments and want to spend less time on the phone.",
+        "price": 1295,
+        "price_suffix": null,
+        "billed_monthly": false,
+        "time_label": "Delivery",
+        "time": "4 to 5 weeks",
+        "includes": [
+            "Everything in the Business website package",
+            "Customers can book online, day or night",
+            "Automatic email confirmations and reminders",
+            "A simple page to manage your bookings",
+            "A walkthrough showing you how it all works"
+        ],
+        "heading": "Booking websites for small businesses",
+        "intro": "A custom online booking website where customers book 24/7, with automatic confirmations and reminders. Less admin for you, at a fixed price from £1,295.",
+        "story": "Every appointment taken by phone or message is time away from your customers, and every missed call may be a lost booking. An online booking website lets people choose a service and a time themselves, even when you are closed.\n\nYour customers get an instant confirmation and a reminder before they arrive, which helps reduce no-shows. You get one simple page showing what is coming up, so there is no need to pay for separate booking apps you don't fully use.",
+        "ideal_for": [
+            "Salons, barbers and beauty businesses",
+            "Clinics, therapists and other health practices",
+            "Restaurants and other businesses that take reservations",
+            "Any business that spends too long arranging appointments"
+        ],
+        "faq": [
+            {
+                "question": "How much does a booking website cost?",
+                "answer": "A website with online booking starts from £1,295. Your fixed price depends on things like how many services and staff calendars you need."
+            },
+            {
+                "question": "Can customers book from their phones?",
+                "answer": "Yes. The booking steps are designed for phones first, because that is where most of your customers will book."
+            },
+            {
+                "question": "Will I be able to manage bookings myself?",
+                "answer": "Yes. You get a simple page to see and manage your bookings, and I will walk you through how it all works before launch."
+            }
+        ],
+        "related_projects": [
+            "salon-booking"
+        ],
+        "seo_title": "Online Booking Website Development",
+        "sort_order": 2,
+        "is_active": true
+    },
+    {
+        "name": "Monthly care plan",
+        "slug": "website-care-plans",
+        "for_who": "For business owners who want their website looked after, so they never have to think about it.",
+        "price": 49,
+        "price_suffix": "/month",
+        "billed_monthly": true,
+        "time_label": "Starts",
+        "time": "Straight after launch",
+        "includes": [
+            "Reliable hosting",
+            "Regular updates and security checks",
+            "Up to 1 hour of small changes each month",
+            "Help by email, whatever your time zone",
+            "No long contract: cancel with 30 days' notice"
+        ],
+        "heading": "Website maintenance and care plans for small businesses",
+        "intro": "Website maintenance made simple: reliable hosting, security updates and small changes, all looked after from £49 a month. No long contract.",
+        "story": "A website needs looking after, just like your premises. Without regular care, things go out of date, small problems grow and your opening hours or prices stop matching reality.\n\nThe care plan takes all of that off your list. I keep your website online, up to date and secure, and when you need a change you just send me an email. You get a real person to talk to, not a support ticket.",
+        "ideal_for": [
+            "Owners who would rather not think about their website",
+            "Businesses that often change prices, menus or opening hours",
+            "Anyone who wants help on hand when they need it",
+            "Clients who have had a website built by me"
+        ],
+        "faq": [
+            {
+                "question": "What counts as a small change?",
+                "answer": "Things like updating prices, adding photos, changing opening hours or editing text. The plan includes up to 1 hour of changes each month."
+            },
+            {
+                "question": "Can I cancel my care plan?",
+                "answer": "Yes. There is no long contract, and you can cancel with 30 days' notice."
+            },
+            {
+                "question": "Do you look after websites you didn't build?",
+                "answer": "Often, yes. Get in touch and tell me about your website, and I will take a look and let you know honestly if I can help."
+            }
+        ],
+        "related_projects": [
+            "clinic-website",
+            "salon-booking"
+        ],
+        "seo_title": "Website Maintenance & Care Plans",
+        "sort_order": 3,
+        "is_active": true
+    }
+]

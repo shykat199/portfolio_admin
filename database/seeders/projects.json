@@ -1,0 +1,131 @@
+[
+    {
+        "title": "Website for a local clinic",
+        "slug": "clinic-website",
+        "is_demo": true,
+        "category": "Clinic",
+        "year": "2026",
+        "service": "small-business-website-design",
+        "problem": "Patients could not find opening times or treatments on their phones, so the front desk took the same calls all day.",
+        "solution": "A clear, phone-friendly website with treatments, prices and opening hours one tap away.",
+        "result": "Designed to answer common questions online and free up the front desk.",
+        "overview": "A concept website for a small, independent clinic. The brief was to look calm and trustworthy, and to help patients find what they need without picking up the phone.",
+        "client_problem": "Many small clinics have websites built years ago, before most patients searched on their phones. Important details are buried, pages load slowly and staff answer the same questions again and again.",
+        "built": [
+            "A home page that shows treatments, opening hours and contact details straight away",
+            "A simple page for each treatment, written in plain English",
+            "Tap-to-call and directions buttons on every page",
+            "An enquiry form that sends messages directly to the clinic's inbox"
+        ],
+        "tech": [
+            "React",
+            "Next.js"
+        ],
+        "results": [
+            "This is a demo project, so it has no real-world results yet.",
+            "It is designed to reduce repeat phone calls and make it easier for new patients to get in touch."
+        ],
+        "cover_file": "clinic-cover.webp",
+        "cover_alt": "Demo clinic website shown in a browser window, with a calm green and cream design",
+        "screenshots": [
+            {
+                "file": "clinic-cover.webp",
+                "alt": "Home page of the demo clinic website",
+                "caption": "The home page puts treatments and opening hours first."
+            },
+            {
+                "file": "clinic-detail.webp",
+                "alt": "Treatments page of the demo clinic website, with a grid of treatments",
+                "caption": "Treatments are easy to scan and compare."
+            }
+        ],
+        "is_active": true,
+        "sort_order": 1
+    },
+    {
+        "title": "Online booking for a hair salon",
+        "slug": "salon-booking",
+        "is_demo": true,
+        "category": "Salon",
+        "year": "2026",
+        "service": "online-booking-websites",
+        "problem": "Bookings came in through phone calls and social media messages, which meant missed appointments and hours of admin.",
+        "solution": "A stylish website where customers choose a service and book a time themselves.",
+        "result": "Designed to take bookings around the clock and cut back on admin.",
+        "overview": "A concept website and booking system for a neighbourhood hair salon, designed to feel stylish and personal and to make booking take less than a minute.",
+        "client_problem": "When bookings arrive through phone calls and direct messages, it is easy to miss one or double-book a chair. Staff stop what they are doing to reply, and customers who get no answer may go elsewhere.",
+        "built": [
+            "A service menu with clear prices and appointment lengths",
+            "A step-by-step booking flow that works well on phones",
+            "Email confirmations and reminders to help reduce no-shows",
+            "A simple page for the salon to see and manage upcoming bookings"
+        ],
+        "tech": [
+            "React",
+            "Next.js"
+        ],
+        "results": [
+            "This is a demo project, so it has no real-world results yet.",
+            "It is designed to let customers book at any time and give the salon back time spent on messages."
+        ],
+        "cover_file": "salon-cover.webp",
+        "cover_alt": "Demo hair salon website shown in a browser window, with a warm terracotta design",
+        "screenshots": [
+            {
+                "file": "salon-cover.webp",
+                "alt": "Home page of the demo salon website",
+                "caption": "Booking is the main action on every page."
+            },
+            {
+                "file": "salon-detail.webp",
+                "alt": "Service menu of the demo salon website, shown as a grid",
+                "caption": "Customers can see services and prices at a glance."
+            }
+        ],
+        "is_active": true,
+        "sort_order": 2
+    },
+    {
+        "title": "Quote requests for a local trade",
+        "slug": "trades-quotes",
+        "is_demo": true,
+        "category": "Trades",
+        "year": "2026",
+        "service": "small-business-website-design",
+        "problem": "A busy tradesperson was relying on word of mouth and had no easy way for new customers to ask for a quote.",
+        "solution": "A straightforward website with services, areas covered and a short quote request form.",
+        "result": "Designed to bring in better enquiries from the right local area.",
+        "overview": "A concept website for a local trades business. The brief was to look dependable, show where the business works and make asking for a quote quick from a phone.",
+        "client_problem": "Good tradespeople often rely on recommendations alone. Without a proper website, new customers cannot check they are trustworthy, and enquiries arrive with too little detail to quote from.",
+        "built": [
+            "Clear pages for each service and the areas covered",
+            "A short quote form that asks for the details that matter",
+            "A tap-to-call button that stays within reach on phones",
+            "Set-up to help the business appear in local Google searches"
+        ],
+        "tech": [
+            "React",
+            "Next.js"
+        ],
+        "results": [
+            "This is a demo project, so it has no real-world results yet.",
+            "It is designed to win trust quickly and bring in enquiries with the right details."
+        ],
+        "cover_file": "trades-cover.webp",
+        "cover_alt": "Demo trades website shown in a browser window, with a strong navy and yellow design",
+        "screenshots": [
+            {
+                "file": "trades-cover.webp",
+                "alt": "Home page of the demo trades website",
+                "caption": "The first screen says what the business does and where."
+            },
+            {
+                "file": "trades-detail.webp",
+                "alt": "Services page of the demo trades website, shown as a grid",
+                "caption": "Services are laid out clearly, each with a route to a quote."
+            }
+        ],
+        "is_active": true,
+        "sort_order": 3
+    }
+]

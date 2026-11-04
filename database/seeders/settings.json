@@ -1,0 +1,36 @@
+{
+    "about_title": "Hello, I'm Shykat",
+    "about_story": "I'm a full-stack web developer with more than 3 years of professional experience building websites and web applications with PHP, Laravel, React, Next.js and Node.js. I'm based in Dhaka, Bangladesh, and I work remotely with businesses all over the world, fitting around your time zone.\n\nI started freelancing because small businesses deserve fast, secure, search-engine-friendly websites as good as the big names have, without agency prices or confusing jargon.",
+    "about_photo_alt": "Portrait of Shykat Roy, wearing glasses and a dark blazer",
+    "about_photo_width": 660,
+    "about_photo_height": 626,
+    "about_reasons_title": "Why you can rely on me",
+    "about_reasons": [
+        "You work directly with me, from the first call to launch and beyond",
+        "You get one fixed price before any work begins",
+        "You see progress every week, so there are no surprises",
+        "I reply during your working day, wherever you are"
+    ],
+    "hero_prefix": "I build",
+    "hero_words": [
+        "websites",
+        "web apps",
+        "mobile apps",
+        "booking systems",
+        "APIs & back ends"
+    ],
+    "hero_headline": "Full-stack web developer for fast, SEO-friendly websites that win more customers.",
+    "hero_highlight": "more customers",
+    "hero_supporting": "I'm Shykat Roy, a full-stack web developer who designs and builds custom websites, web applications and mobile apps that turn visitors into calls, bookings and enquiries. Fixed price, no surprises.",
+    "seo_title": "Full-Stack Developer – Laravel, React & Next.js | Shykat Roy",
+    "seo_description": "Freelance full-stack developer (Laravel, React, Next.js, Node.js) building fast, SEO-friendly websites, web apps and mobile apps for businesses worldwide.",
+    "seo_keywords": [
+        "full-stack web developer",
+        "Laravel developer",
+        "React developer",
+        "Next.js developer",
+        "website design",
+        "web app development",
+        "mobile app development"
+    ]
+}

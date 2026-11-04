@@ -1,0 +1,42 @@
+[
+    {
+        "role": "Full-Stack Developer",
+        "company": "PFEC Global",
+        "company_url": "https://www.pfecglobal.com",
+        "type": "Full-time",
+        "location": null,
+        "start": "2025",
+        "end": null,
+        "summary": "Building and maintaining the company's web applications across the front end and back end, from user-facing pages to APIs and databases.",
+        "highlights": [],
+        "tech": [
+            "PHP",
+            "Laravel",
+            "Node.js",
+            "React",
+            "Next.js",
+            "MySQL"
+        ],
+        "is_active": true,
+        "sort_order": 1
+    },
+    {
+        "role": "Full-Stack Developer",
+        "company": "Appsinception",
+        "company_url": null,
+        "type": "Full-time",
+        "location": null,
+        "start": "2023",
+        "end": "2025",
+        "summary": "Developed web applications for clients, working on both the front end and the back end.",
+        "highlights": [],
+        "tech": [
+            "PHP",
+            "Laravel",
+            "React",
+            "MySQL"
+        ],
+        "is_active": true,
+        "sort_order": 2
+    }
+]
