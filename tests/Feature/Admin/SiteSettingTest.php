@@ -129,6 +129,56 @@ class SiteSettingTest extends TestCase
         Storage::disk('public')->assertMissing('brand/logo.png');
     }
 
+    public function test_a_resume_can_be_uploaded_and_removed(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData([
+                'resume' => UploadedFile::fake()->create('cv.pdf', 300, 'application/pdf'),
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $path = SiteSetting::current()->resume_path;
+        Storage::disk('public')->assertExists($path);
+        $this->getJson(route('api.settings.show'))->assertJsonPath('data.resume', Storage::disk('public')->url($path));
+
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData(['remove_resume' => '1']))
+            ->assertSessionHasNoErrors();
+
+        $this->assertNull(SiteSetting::current()->resume_path);
+        Storage::disk('public')->assertMissing($path);
+    }
+
+    public function test_the_resume_must_be_a_pdf(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData([
+                'resume' => UploadedFile::fake()->create('cv.docx', 100, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
+            ]))
+            ->assertSessionHasErrors('resume');
+    }
+
+    public function test_home_page_sections_can_be_switched_off(): void
+    {
+        $sections = array_fill_keys(array_keys(SiteSetting::SECTIONS), '1');
+
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData(['sections' => [...$sections, 'work' => '0', 'faq' => '0']]))
+            ->assertSessionHasNoErrors();
+
+        $settings = SiteSetting::current();
+        $this->assertSame(['work', 'faq'], $settings->hidden_sections);
+        $this->assertFalse($settings->showsSection('work'));
+        $this->assertTrue($settings->showsSection('services'));
+        $this->getJson(route('api.settings.show'))->assertJsonPath('data.hiddenSections', ['work', 'faq']);
+
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData(['sections' => $sections]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame([], SiteSetting::current()->hidden_sections);
+    }
+
     public function test_the_api_returns_settings_for_the_website(): void
     {
         SiteSetting::current()->update(['about_story' => "A.\n\nB.", 'facebook_url' => 'https://www.facebook.com/me']);

@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\PostRequest;
 use App\Models\Post;
 use App\Models\Service;
 use App\PostStatus;
+use App\Services\WebpImageStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
@@ -16,6 +17,8 @@ use Illuminate\View\View;
 class PostController extends Controller
 {
     use RefreshesFrontend;
+
+    public function __construct(private WebpImageStore $images) {}
 
     /**
      * List every post, newest first.
@@ -125,7 +128,7 @@ class PostController extends Controller
         $attributes = $request->safe()->except('cover');
 
         if ($request->hasFile('cover')) {
-            $attributes['cover_path'] = $request->file('cover')->store('blog', 'public');
+            $attributes['cover_path'] = $this->images->store($request->file('cover'), 'blog');
         }
 
         $isPublishing = $request->enum('status', PostStatus::class) === PostStatus::Published;

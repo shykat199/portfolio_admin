@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b95aef2242bb3dce2389c238b7ec69bf",
+    "content-hash": "a46b0111ff29fcc6405986db54815e1a",
     "packages": [
         {
             "name": "brick/math",
@@ -3270,6 +3270,78 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.4"
             },
             "time": "2026-09-16T11:39:30+00:00"
+        },
+        {
+            "name": "shykat199/webpbolt",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shykat199/webpbolt.git",
+                "reference": "f364db57263d0e8c176414d95e1670477cd011c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shykat199/webpbolt/zipball/f364db57263d0e8c176414d95e1670477cd011c0",
+                "reference": "f364db57263d0e8c176414d95e1670477cd011c0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "illuminate/console": "^10.0|^11.0|^12.0",
+                "illuminate/support": "^10.0|^11.0|^12.0",
+                "pestphp/pest": "^2.34"
+            },
+            "suggest": {
+                "ext-exif": "Needed by the AutoOrient transform to read rotation from phone photos",
+                "illuminate/support": "Enables Laravel auto-discovery, config publishing and the images:webp command"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Shykat\\WebpBolt\\Laravel\\WebpBoltServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shykat\\WebpBolt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shykat",
+                    "email": "shykatroy.11815813@gmail.com"
+                }
+            ],
+            "description": "Convert JPG, PNG, GIF and BMP images to WebP fast. Lightweight, zero dependencies, powered by PHP GD.",
+            "homepage": "https://github.com/shykat199/webpbolt",
+            "keywords": [
+                "Webp",
+                "compression",
+                "converter",
+                "gd",
+                "image",
+                "image-conversion",
+                "jpg-to-webp",
+                "laravel",
+                "optimization",
+                "php",
+                "png-to-webp",
+                "watermark"
+            ],
+            "support": {
+                "issues": "https://github.com/shykat199/webpbolt/issues",
+                "source": "https://github.com/shykat199/webpbolt/tree/v1.0.1"
+            },
+            "time": "2026-08-23T14:46:54+00:00"
         },
         {
             "name": "symfony/clock",
@@ -8922,12 +8994,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.3"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Models\SiteSetting;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SiteSettingRequest extends FormRequest
 {
@@ -30,7 +32,18 @@ class SiteSettingRequest extends FormRequest
             'whatsapp_number' => preg_replace('/\D+/', '', (string) $this->input('whatsapp_number')) ?: null,
             'remove_logo' => $this->boolean('remove_logo'),
             'remove_favicon' => $this->boolean('remove_favicon'),
+            'remove_resume' => $this->boolean('remove_resume'),
         ]);
+
+        // Each section switch sends 0 or 1; store the ones switched off.
+        if ($this->has('sections')) {
+            $this->merge([
+                'hidden_sections' => collect(array_keys(SiteSetting::SECTIONS))
+                    ->reject(fn (string $section): bool => $this->boolean("sections.$section"))
+                    ->values()
+                    ->all(),
+            ]);
+        }
     }
 
     /**
@@ -76,9 +89,13 @@ class SiteSettingRequest extends FormRequest
             'about_story' => ['required', 'string', 'max:4000'],
             'about_photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096', 'dimensions:min_width=300,min_height=300'],
             'about_photo_alt' => ['required', 'string', 'max:200'],
+            'resume' => ['nullable', 'file', 'mimes:pdf', 'max:5120'],
+            'remove_resume' => ['boolean'],
             'about_reasons_title' => ['required', 'string', 'max:120'],
             'about_reasons' => ['array', 'max:8'],
             'about_reasons.*' => ['string', 'max:200'],
+            'hidden_sections' => ['sometimes', 'array'],
+            'hidden_sections.*' => [Rule::in(array_keys(SiteSetting::SECTIONS))],
         ];
     }
 
@@ -120,6 +137,7 @@ class SiteSettingRequest extends FormRequest
         return [
             'favicon.dimensions' => __('The favicon must be square and at least 48 × 48 pixels.'),
             'favicon.mimes' => __('The favicon must be a PNG file.'),
+            'resume.mimes' => __('The résumé must be a PDF file.'),
         ];
     }
 
@@ -156,6 +174,7 @@ class SiteSettingRequest extends FormRequest
             'about_story' => 'about text',
             'about_photo' => 'photo',
             'about_photo_alt' => 'photo description',
+            'resume' => 'résumé',
             'about_reasons_title' => 'list heading',
             'about_reasons' => 'reasons',
         ];

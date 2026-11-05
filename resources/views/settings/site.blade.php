@@ -4,6 +4,7 @@
     $logo = $settings->url($settings->logo_path);
     $favicon = $settings->url($settings->favicon_path);
     $photo = $settings->url($settings->about_photo_path);
+    $resume = $settings->url($settings->resume_path);
 @endphp
 
 <x-layouts.app :title="__('Site settings')">
@@ -152,6 +153,39 @@
                 <x-field name="about_photo_alt" :label="__('Photo description')">
                     <input id="about_photo_alt" name="about_photo_alt" value="{{ old('about_photo_alt', $settings->about_photo_alt) }}" required maxlength="200" placeholder="{{ __('e.g. Portrait of Shykat Roy') }}" class="{{ $input }}">
                 </x-field>
+            </section>
+
+            <section class="space-y-5 rounded-2xl border border-line bg-raised p-5 sm:p-6">
+                <x-field name="resume" :label="__('Résumé')" :hint="__('A PDF, up to 5 MB. Visitors can download it from the About page; leave empty to hide the button.')">
+                    @if ($resume)
+                        <a href="{{ $resume }}" target="_blank" rel="noopener" class="mb-3 inline-flex items-center gap-2 text-sm text-accent underline-offset-4 hover:underline">{{ __('View the current résumé') }}</a>
+                    @endif
+                    <input id="resume" name="resume" type="file" accept="application/pdf" class="{{ $file }}">
+                    @if ($resume)
+                        <label class="mt-3 flex cursor-pointer items-center gap-2 text-sm text-muted">
+                            <input type="checkbox" name="remove_resume" value="1" class="size-4 accent-accent"> {{ __('Remove the résumé') }}
+                        </label>
+                    @endif
+                </x-field>
+            </section>
+
+            <section class="space-y-4 rounded-2xl border border-line bg-raised p-5 sm:p-6">
+                <div>
+                    <h2 class="font-medium">{{ __('Home page sections') }}</h2>
+                    <p class="text-xs text-muted">{{ __('Switch a section off to hide it, and its menu link, on the website. The hero is always shown.') }}</p>
+                </div>
+                <ul class="divide-y divide-line">
+                    @foreach (\App\Models\SiteSetting::SECTIONS as $section => $label)
+                        <li>
+                            <label class="flex cursor-pointer items-center justify-between gap-4 py-2.5">
+                                <span class="text-sm">{{ __($label) }}</span>
+                                <input type="hidden" name="sections[{{ $section }}]" value="0">
+                                <input type="checkbox" role="switch" name="sections[{{ $section }}]" value="1" @checked(old("sections.$section", $settings->showsSection($section) ? '1' : '0') === '1') class="peer sr-only">
+                                <span aria-hidden="true" class="relative h-6 w-11 shrink-0 rounded-full bg-fg/20 transition-colors peer-checked:bg-accent peer-focus-visible:ring-2 peer-focus-visible:ring-accent peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-raised after:absolute after:top-0.5 after:left-0.5 after:size-5 after:rounded-full after:bg-surface after:transition-transform peer-checked:after:translate-x-5"></span>
+                            </label>
+                        </li>
+                    @endforeach
+                </ul>
             </section>
 
             <section class="space-y-6 rounded-2xl border border-line bg-raised p-5 sm:p-6">
