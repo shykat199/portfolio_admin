@@ -47,6 +47,9 @@ class SiteSettingTest extends TestCase
             'person_job_title' => 'Full-Stack Web Developer',
             'person_email' => 'me@example.com',
             'person_phone' => '+880 1712-345678',
+            'person_website' => 'https://shykatroy.com',
+            'person_street_address' => 'Dhanmondi 27',
+            'person_postal_code' => '1209',
             'person_skills' => ['Laravel', '', 'React'],
             'person_languages' => ['English'],
             'linkedin_url' => 'https://www.linkedin.com/in/me',
@@ -82,6 +85,9 @@ class SiteSettingTest extends TestCase
         $this->assertSame(['one', 'two'], $settings->seo_keywords);
         $this->assertSame(['Laravel', 'React'], $settings->person_skills);
         $this->assertSame('8801712345678', $settings->whatsapp_number);
+        $this->assertSame('https://shykatroy.com', $settings->person_website);
+        $this->assertSame('Dhanmondi 27', $settings->person_street_address);
+        $this->assertSame('1209', $settings->person_postal_code);
         $this->assertSame([600, 500], [$settings->about_photo_width, $settings->about_photo_height]);
         Storage::disk('public')->assertExists([$settings->logo_path, $settings->favicon_path, $settings->about_photo_path]);
         Http::assertSent(fn ($request) => $request['tag'] === 'settings');

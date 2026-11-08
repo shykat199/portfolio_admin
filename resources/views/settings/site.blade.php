@@ -85,6 +85,15 @@
                     <x-field name="person_phone" :label="__('Phone')" :hint="__('Optional. Only if you want it public.')">
                         <input id="person_phone" name="person_phone" type="tel" value="{{ old('person_phone', $settings->person_phone) }}" maxlength="30" placeholder="+880 1712 345678" class="{{ $input }}">
                     </x-field>
+                    <x-field name="person_website" :label="__('Website')" :hint="__('Optional. Used in the contact QR code. Leave empty to use this site’s address.')" class="sm:col-span-2">
+                        <input id="person_website" name="person_website" type="url" value="{{ old('person_website', $settings->person_website) }}" maxlength="255" placeholder="https://shykatroy.com" class="{{ $input }}">
+                    </x-field>
+                    <x-field name="person_street_address" :label="__('Street address')">
+                        <input id="person_street_address" name="person_street_address" value="{{ old('person_street_address', $settings->person_street_address) }}" maxlength="160" placeholder="{{ __('e.g. Dhanmondi 27') }}" class="{{ $input }}">
+                    </x-field>
+                    <x-field name="person_postal_code" :label="__('Postal code')">
+                        <input id="person_postal_code" name="person_postal_code" value="{{ old('person_postal_code', $settings->person_postal_code) }}" maxlength="20" placeholder="{{ __('e.g. 1209') }}" class="{{ $input }}">
+                    </x-field>
                     <x-field name="person_city" :label="__('City')">
                         <input id="person_city" name="person_city" value="{{ old('person_city', $settings->person_city) }}" maxlength="80" placeholder="{{ __('e.g. Dhaka') }}" class="{{ $input }}">
                     </x-field>

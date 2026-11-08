@@ -36,8 +36,8 @@ class SiteSettingController extends Controller
             'linkedin_url', 'github_url', 'facebook_url', 'instagram_url', 'x_url', 'whatsapp_number',
             'hero_prefix', 'hero_words', 'hero_headline', 'hero_highlight', 'hero_supporting',
             'seo_title', 'seo_description', 'seo_keywords',
-            'person_name', 'person_job_title', 'person_description', 'person_email', 'person_phone',
-            'person_city', 'person_country', 'person_skills', 'person_languages',
+            'person_name', 'person_job_title', 'person_description', 'person_email', 'person_phone', 'person_website',
+            'person_street_address', 'person_postal_code', 'person_city', 'person_country', 'person_skills', 'person_languages',
             'about_title', 'about_story', 'about_photo_alt', 'about_reasons_title', 'about_reasons',
             'hidden_sections',
         ]);
