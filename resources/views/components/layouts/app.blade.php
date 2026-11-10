@@ -108,6 +108,16 @@
                 <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
             </button>
             <h1 class="truncate text-lg font-semibold">{{ $title }}</h1>
+
+            @if (config('blog.frontend_url'))
+                <a href="{{ config('blog.frontend_url') }}" target="_blank" rel="noopener"
+                    class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border border-line px-3 py-2 text-sm text-muted transition-colors hover:border-accent/50 hover:text-accent">
+                    <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg>
+                    <span class="hidden sm:inline">{{ __('View site') }}</span>
+                    <span class="sr-only sm:hidden">{{ __('View site') }}</span>
+                    <span class="sr-only">{{ __('(opens in a new tab)') }}</span>
+                </a>
+            @endif
         </header>
 
         <main id="main" class="px-4 py-6 sm:px-6 sm:py-8 lg:px-8">

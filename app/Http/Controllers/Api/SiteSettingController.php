@@ -21,6 +21,7 @@ class SiteSettingController extends Controller
             'updatedAt' => $settings->updated_at?->toDateString(),
             'logo' => $settings->url($settings->logo_path),
             'favicon' => $settings->url($settings->favicon_path),
+            'resume' => $settings->url($settings->resume_path),
             'social' => [
                 'linkedin' => $settings->linkedin_url,
                 'github' => $settings->github_url,
@@ -29,6 +30,7 @@ class SiteSettingController extends Controller
                 'x' => $settings->x_url,
             ],
             'whatsapp' => $settings->whatsapp_number,
+            'hiddenSections' => $settings->hidden_sections ?? [],
             'hero' => $settings->hero_headline ? [
                 'prefix' => $settings->hero_prefix,
                 'words' => $settings->hero_words ?? [],
@@ -73,6 +75,9 @@ class SiteSettingController extends Controller
             'description' => $settings->person_description,
             'email' => $settings->person_email,
             'phone' => $settings->person_phone,
+            'website' => $settings->person_website,
+            'streetAddress' => $settings->person_street_address,
+            'postalCode' => $settings->person_postal_code,
             'city' => $settings->person_city,
             'country' => $settings->person_country,
             'skills' => $settings->person_skills ?? [],

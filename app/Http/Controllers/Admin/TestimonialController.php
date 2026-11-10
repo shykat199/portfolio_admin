@@ -6,6 +6,7 @@ use App\Http\Controllers\Concerns\RefreshesFrontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TestimonialRequest;
 use App\Models\Testimonial;
+use App\Services\WebpImageStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -13,6 +14,8 @@ use Illuminate\View\View;
 class TestimonialController extends Controller
 {
     use RefreshesFrontend;
+
+    public function __construct(private WebpImageStore $images) {}
 
     /**
      * List every testimonial in display order.
@@ -107,7 +110,7 @@ class TestimonialController extends Controller
         }
 
         if ($request->hasFile('photo')) {
-            $attributes['photo_path'] = $request->file('photo')->store('testimonials', 'public');
+            $attributes['photo_path'] = $this->images->store($request->file('photo'), 'testimonials');
         }
 
         return $attributes;

@@ -47,6 +47,9 @@ class SiteSettingTest extends TestCase
             'person_job_title' => 'Full-Stack Web Developer',
             'person_email' => 'me@example.com',
             'person_phone' => '+880 1712-345678',
+            'person_website' => 'https://shykatroy.com',
+            'person_street_address' => 'Dhanmondi 27',
+            'person_postal_code' => '1209',
             'person_skills' => ['Laravel', '', 'React'],
             'person_languages' => ['English'],
             'linkedin_url' => 'https://www.linkedin.com/in/me',
@@ -82,6 +85,9 @@ class SiteSettingTest extends TestCase
         $this->assertSame(['one', 'two'], $settings->seo_keywords);
         $this->assertSame(['Laravel', 'React'], $settings->person_skills);
         $this->assertSame('8801712345678', $settings->whatsapp_number);
+        $this->assertSame('https://shykatroy.com', $settings->person_website);
+        $this->assertSame('Dhanmondi 27', $settings->person_street_address);
+        $this->assertSame('1209', $settings->person_postal_code);
         $this->assertSame([600, 500], [$settings->about_photo_width, $settings->about_photo_height]);
         Storage::disk('public')->assertExists([$settings->logo_path, $settings->favicon_path, $settings->about_photo_path]);
         Http::assertSent(fn ($request) => $request['tag'] === 'settings');
@@ -127,6 +133,56 @@ class SiteSettingTest extends TestCase
 
         $this->assertNull(SiteSetting::current()->logo_path);
         Storage::disk('public')->assertMissing('brand/logo.png');
+    }
+
+    public function test_a_resume_can_be_uploaded_and_removed(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData([
+                'resume' => UploadedFile::fake()->create('cv.pdf', 300, 'application/pdf'),
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $path = SiteSetting::current()->resume_path;
+        Storage::disk('public')->assertExists($path);
+        $this->getJson(route('api.settings.show'))->assertJsonPath('data.resume', Storage::disk('public')->url($path));
+
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData(['remove_resume' => '1']))
+            ->assertSessionHasNoErrors();
+
+        $this->assertNull(SiteSetting::current()->resume_path);
+        Storage::disk('public')->assertMissing($path);
+    }
+
+    public function test_the_resume_must_be_a_pdf(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData([
+                'resume' => UploadedFile::fake()->create('cv.docx', 100, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
+            ]))
+            ->assertSessionHasErrors('resume');
+    }
+
+    public function test_home_page_sections_can_be_switched_off(): void
+    {
+        $sections = array_fill_keys(array_keys(SiteSetting::SECTIONS), '1');
+
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData(['sections' => [...$sections, 'work' => '0', 'faq' => '0']]))
+            ->assertSessionHasNoErrors();
+
+        $settings = SiteSetting::current();
+        $this->assertSame(['work', 'faq'], $settings->hidden_sections);
+        $this->assertFalse($settings->showsSection('work'));
+        $this->assertTrue($settings->showsSection('services'));
+        $this->getJson(route('api.settings.show'))->assertJsonPath('data.hiddenSections', ['work', 'faq']);
+
+        $this->actingAs(User::factory()->create())
+            ->put(route('site-settings.update'), $this->validData(['sections' => $sections]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame([], SiteSetting::current()->hidden_sections);
     }
 
     public function test_the_api_returns_settings_for_the_website(): void

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProjectRequest;
 use App\Models\Project;
 use App\Models\Service;
+use App\Services\WebpImageStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
@@ -15,6 +16,8 @@ use Illuminate\View\View;
 class ProjectController extends Controller
 {
     use RefreshesFrontend;
+
+    public function __construct(private WebpImageStore $images) {}
 
     /**
      * List every project in display order.
@@ -131,7 +134,7 @@ class ProjectController extends Controller
         $attributes = $request->safe()->except(['cover', 'screenshots']);
 
         if ($request->hasFile('cover')) {
-            $attributes['cover_path'] = $request->file('cover')->store('work', 'public');
+            $attributes['cover_path'] = $this->images->store($request->file('cover'), 'work');
         }
 
         $attributes['screenshots'] = $this->screenshots($request, $project);
@@ -159,7 +162,7 @@ class ProjectController extends Controller
             }
 
             if ($request->hasFile("screenshots.$index.file")) {
-                $path = $request->file("screenshots.$index.file")->store('work', 'public');
+                $path = $this->images->store($request->file("screenshots.$index.file"), 'work');
             } elseif (! $existing->contains($path)) {
                 continue;
             }

@@ -59,7 +59,7 @@ class ProjectRequest extends FormRequest
             'result' => ['required', 'string', 'max:300'],
             'overview' => ['required', 'string', 'max:2000'],
             'client_problem' => ['required', 'string', 'max:2000'],
-            'built' => ['required', 'array', 'min:1', 'max:15'],
+            'built' => ['required', 'array', 'min:1'],
             'built.*' => ['string', 'max:200'],
             'tech' => ['array', 'max:20'],
             'tech.*' => ['string', 'max:40'],

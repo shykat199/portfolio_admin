@@ -6,6 +6,7 @@ use App\Http\Controllers\Concerns\RefreshesFrontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TechItemRequest;
 use App\Models\TechItem;
+use App\Services\WebpImageStore;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -13,6 +14,8 @@ use Illuminate\View\View;
 class TechItemController extends Controller
 {
     use RefreshesFrontend;
+
+    public function __construct(private WebpImageStore $images) {}
 
     /**
      * List the tech stack in display order.
@@ -107,7 +110,7 @@ class TechItemController extends Controller
         }
 
         if ($request->hasFile('logo')) {
-            $attributes['logo_path'] = $request->file('logo')->store('tech', 'public');
+            $attributes['logo_path'] = $this->images->store($request->file('logo'), 'tech');
         }
 
         return $attributes;
