@@ -52,6 +52,7 @@ class ProjectRequest extends FormRequest
             'is_demo' => ['boolean'],
             'category' => ['required', 'string', 'max:60'],
             'year' => ['required', 'digits:4'],
+            'live_url' => ['nullable', 'url:http,https', 'max:2048'],
             'service' => ['nullable', Rule::exists('services', 'slug')],
             'problem' => ['required', 'string', 'max:300'],
             'solution' => ['required', 'string', 'max:300'],

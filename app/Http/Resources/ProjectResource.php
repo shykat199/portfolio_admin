@@ -24,6 +24,7 @@ class ProjectResource extends JsonResource
             'isDemo' => $this->is_demo,
             'category' => $this->category,
             'year' => $this->year,
+            'liveUrl' => $this->live_url,
             'relatedService' => $this->service,
             'problem' => $this->problem,
             'solution' => $this->solution,

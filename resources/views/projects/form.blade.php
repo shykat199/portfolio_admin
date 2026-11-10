@@ -33,6 +33,9 @@
                         <input id="year" name="year" value="{{ old('year', $project->year) }}" required inputmode="numeric" maxlength="4" placeholder="{{ now()->format('Y') }}" class="{{ $input }}">
                     </x-field>
                 </div>
+                <x-field name="live_url" :label="__('Live project URL')" :hint="__('Optional. The link opens in a new tab on the case study page.')">
+                    <input id="live_url" name="live_url" type="url" value="{{ old('live_url', $project->live_url) }}" maxlength="2048" placeholder="https://example.com" class="{{ $input }}">
+                </x-field>
                 <x-field name="problem" :label="__('Problem')" :hint="__('One or two sentences.')">
                     <textarea id="problem" name="problem" rows="2" maxlength="300" required placeholder="{{ __('What was getting in the client’s way?') }}" class="{{ $input }}">{{ old('problem', $project->problem) }}</textarea>
                 </x-field>

@@ -72,6 +72,7 @@ class ProjectManagementTest extends TestCase
     {
         $this->actingAs(User::factory()->create())
             ->post(route('projects.store'), $this->validData([
+                'live_url' => 'https://example.com',
                 'screenshots' => [
                     ['file' => UploadedFile::fake()->image('one.png', 1200, 800), 'alt' => 'Menu page', 'caption' => 'The menu'],
                 ],
@@ -81,6 +82,7 @@ class ProjectManagementTest extends TestCase
 
         $project = Project::sole();
         $this->assertSame('bakery-ordering-website', $project->slug);
+        $this->assertSame('https://example.com', $project->live_url);
         $this->assertSame(['Online menu', 'Order form'], $project->built);
         $this->assertSame(['Laravel', 'React'], $project->tech);
         Storage::disk('public')->assertExists($project->cover_path);
@@ -88,6 +90,15 @@ class ProjectManagementTest extends TestCase
         Storage::disk('public')->assertExists($project->screenshots[0]['path']);
 
         Http::assertSent(fn ($request) => $request['tag'] === 'projects');
+    }
+
+    public function test_an_invalid_live_project_url_is_rejected(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post(route('projects.store'), $this->validData(['live_url' => 'not a URL']))
+            ->assertSessionHasErrors('live_url');
+
+        $this->assertDatabaseCount('projects', 0);
     }
 
     public function test_a_cover_and_screenshot_descriptions_are_required(): void
@@ -152,8 +163,13 @@ class ProjectManagementTest extends TestCase
         $service = Service::factory()->create(['related_projects' => ['old-project', 'other']]);
 
         $this->actingAs(User::factory()->create())
-            ->put(route('projects.update', $project), $this->validData(['slug' => 'new-project', 'cover' => null]))
+            ->put(route('projects.update', $project), $this->validData([
+                'slug' => 'new-project',
+                'live_url' => 'https://updated.example.com',
+                'cover' => null,
+            ]))
             ->assertSessionHasNoErrors();
+        $this->assertSame('https://updated.example.com', $project->fresh()->live_url);
         $this->assertSame(['new-project', 'other'], $service->fresh()->related_projects);
 
         $this->actingAs(User::factory()->create())

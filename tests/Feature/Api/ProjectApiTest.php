@@ -26,12 +26,14 @@ class ProjectApiTest extends TestCase
     {
         $project = Project::factory()->create([
             'is_demo' => true,
+            'live_url' => 'https://example.com',
             'screenshots' => [['path' => 'work/a.png', 'alt' => 'A', 'caption' => 'Cap']],
         ]);
 
         $this->getJson(route('api.projects.show', $project->slug))
             ->assertOk()
             ->assertJsonPath('data.cover.src', url('storage/work/cover.webp'))
+            ->assertJsonPath('data.liveUrl', 'https://example.com')
             ->assertJsonPath('data.screenshots.0', ['src' => url('storage/work/a.png'), 'alt' => 'A', 'caption' => 'Cap'])
             ->assertJsonPath('data.seo.title', $project->title.' (demo)');
     }

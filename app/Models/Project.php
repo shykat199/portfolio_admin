@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 
 #[Fillable([
     'title', 'slug', 'is_demo', 'category', 'year', 'service', 'problem', 'solution', 'result',
+    'live_url',
     'overview', 'client_problem', 'built', 'tech', 'results', 'cover_path', 'cover_alt', 'screenshots',
     'seo_title', 'meta_description', 'meta_keywords', 'is_active', 'sort_order',
 ])]
