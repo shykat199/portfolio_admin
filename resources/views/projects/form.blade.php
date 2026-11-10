@@ -71,7 +71,7 @@
                 <div class="flex items-center justify-between gap-3">
                     <div>
                         <h2 class="font-medium">{{ __('Screenshots') }}</h2>
-                        <p class="text-xs text-muted">{{ __('JPG, PNG or WebP, up to 4 MB each. Shown in a grid on the case study page.') }}</p>
+                        <p class="text-xs text-muted">{{ __('JPG, PNG or WebP, up to 4 MB each. Shown in a grid on the case study page. Screenshot descriptions are optional; describe them for screen readers and Google.') }}</p>
                     </div>
                     <button type="button" data-shot-add class="inline-flex min-h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-lg border border-line px-3 text-sm hover:border-accent hover:text-accent">
                         <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
@@ -92,7 +92,7 @@
                                 <label class="block text-xs text-muted">{{ __('Replace image') }}
                                     <input type="file" name="screenshots[{{ $index }}][file]" accept="image/jpeg,image/png,image/webp" data-shot-file class="mt-1 block w-full text-xs file:mr-2 file:cursor-pointer file:rounded-full file:border-0 file:bg-fg/10 file:px-3 file:py-1.5 file:text-xs file:text-fg">
                                 </label>
-                                <input name="screenshots[{{ $index }}][alt]" value="{{ $shot['alt'] ?? '' }}" maxlength="200" placeholder="{{ __('Image description (required)') }}" class="{{ $input }}">
+                                <input name="screenshots[{{ $index }}][alt]" value="{{ $shot['alt'] ?? '' }}" maxlength="200" placeholder="{{ __('Image description (optional)') }}" class="{{ $input }}">
                                 @error("screenshots.$index.alt")<p class="text-xs text-error">{{ $message }}</p>@enderror
                                 <input name="screenshots[{{ $index }}][caption]" value="{{ $shot['caption'] ?? '' }}" maxlength="200" placeholder="{{ __('Caption shown under the image') }}" class="{{ $input }}">
                             </div>
@@ -110,7 +110,7 @@
                         </div>
                         <div class="space-y-3 p-3">
                             <input type="file" name="screenshots[__INDEX__][file]" accept="image/jpeg,image/png,image/webp" data-shot-file class="block w-full text-xs file:mr-2 file:cursor-pointer file:rounded-full file:border-0 file:bg-fg/10 file:px-3 file:py-1.5 file:text-xs file:text-fg">
-                            <input name="screenshots[__INDEX__][alt]" maxlength="200" placeholder="{{ __('Image description (required)') }}" class="{{ $input }}">
+                            <input name="screenshots[__INDEX__][alt]" maxlength="200" placeholder="{{ __('Image description (optional)') }}" class="{{ $input }}">
                             <input name="screenshots[__INDEX__][caption]" maxlength="200" placeholder="{{ __('Caption shown under the image') }}" class="{{ $input }}">
                         </div>
                     </div>

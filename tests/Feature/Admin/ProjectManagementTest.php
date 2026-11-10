@@ -92,6 +92,19 @@ class ProjectManagementTest extends TestCase
         Http::assertSent(fn ($request) => $request['tag'] === 'projects');
     }
 
+    public function test_a_project_can_be_created_without_a_screenshot_description(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post(route('projects.store'), $this->validData([
+                'screenshots' => [
+                    ['file' => UploadedFile::fake()->image('one.png', 1200, 800), 'alt' => ''],
+                ],
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame('', Project::sole()->screenshots[0]['alt']);
+    }
+
     public function test_an_invalid_live_project_url_is_rejected(): void
     {
         $this->actingAs(User::factory()->create())
@@ -101,14 +114,11 @@ class ProjectManagementTest extends TestCase
         $this->assertDatabaseCount('projects', 0);
     }
 
-    public function test_a_cover_and_screenshot_descriptions_are_required(): void
+    public function test_a_cover_image_is_required(): void
     {
         $this->actingAs(User::factory()->create())
-            ->post(route('projects.store'), $this->validData([
-                'cover' => null,
-                'screenshots' => [['file' => UploadedFile::fake()->image('one.png', 1200, 800), 'alt' => '']],
-            ]))
-            ->assertSessionHasErrors(['cover', 'screenshots.0.alt']);
+            ->post(route('projects.store'), $this->validData(['cover' => null]))
+            ->assertSessionHasErrors('cover');
 
         $this->assertDatabaseCount('projects', 0);
     }

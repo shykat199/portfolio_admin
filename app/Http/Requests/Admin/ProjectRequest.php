@@ -83,23 +83,6 @@ class ProjectRequest extends FormRequest
     }
 
     /**
-     * Every kept or new screenshot needs a description.
-     *
-     * @return array<int, \Closure>
-     */
-    public function after(): array
-    {
-        return [function ($validator): void {
-            foreach ($this->input('screenshots', []) as $index => $row) {
-                $kept = ! ($row['remove'] ?? false) && (filled($row['path'] ?? null) || $this->hasFile("screenshots.$index.file"));
-                if ($kept && blank($row['alt'] ?? null)) {
-                    $validator->errors()->add("screenshots.$index.alt", __('Describe this screenshot for screen readers and Google.'));
-                }
-            }
-        }];
-    }
-
-    /**
      * @return array<string, string>
      */
     public function attributes(): array
