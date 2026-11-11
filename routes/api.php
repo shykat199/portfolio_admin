@@ -19,6 +19,7 @@ Route::middleware('throttle:120,1')->name('api.')->group(function () {
     Route::get('services', [ServiceController::class, 'index'])->name('services.index');
     Route::get('services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 
+    Route::get('home/projects', [ProjectController::class, 'home'])->name('projects.home');
     Route::get('projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::get('projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
 

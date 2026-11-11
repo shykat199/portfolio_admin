@@ -10,6 +10,14 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 class ProjectController extends Controller
 {
     /**
+     * The first five active projects for the home page, in display order.
+     */
+    public function home(): AnonymousResourceCollection
+    {
+        return ProjectResource::collection(Project::query()->active()->limit(5)->get());
+    }
+
+    /**
      * Projects shown on the website, in display order.
      */
     public function index(): AnonymousResourceCollection
